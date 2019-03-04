@@ -1,0 +1,40 @@
+<h1>Posts#index</h1>
+
+<%= render 'form', post: @post %>
+<div id="posts">
+  <ul id="lista">
+    <%= render @posts %>
+  </ul>
+</div>
+
+<h3>Buscador</h3>
+<form action="<% posts_path %>">
+  <input type="text" id="buscador">
+</form>
+
+<div class="modal" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Modal title</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        ...
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  $('#buscador').keyup(function () { 
+    $.ajax({
+      type: "GET",
+      url: "<%= posts_path %>",
+      dataType: 'script',
+      data: {buscador: $(this).val()},
+    });
+  });
+</script>
