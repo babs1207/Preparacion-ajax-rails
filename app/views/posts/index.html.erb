@@ -1,4 +1,9 @@
-<h1>Posts#index</h1>
+
+<% if user_signed_in? %>
+  <h1>Posts</h1>
+<% else %>
+  <h1>Registrate para crear, ver y editar posts</h1>
+<% end %>
 
 <%= render 'form', post: @post %>
 <div id="posts">

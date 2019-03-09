@@ -1,5 +1,7 @@
 class PostsController < ApplicationController
 
+  before_action :authenticate_user!, except: :index
+
   def index
     if params[:buscador].present? && params[:buscador].length >2
       @result = Post.where('title like ?', "%#{params[:buscador]}%")
